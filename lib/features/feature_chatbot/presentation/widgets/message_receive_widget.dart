@@ -32,7 +32,7 @@ class MessageReceiveWidget extends StatelessWidget {
           ),
           child: Text(
             title,
-            style: AppFonts.inter16W400.copyWith(color: AppColors.black),
+            style: Theme.of(context).textTheme.labelMedium,
           ),
         ),
         SizedBox(

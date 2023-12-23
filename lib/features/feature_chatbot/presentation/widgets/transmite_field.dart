@@ -1,8 +1,6 @@
-import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:cr/features/feature_chatbot/presentation/controllers/chatbot_bloc.dart';
-import 'package:cr/features/feature_chatbot/presentation/screens/chatbot_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,10 +38,18 @@ class TransmiteField extends StatelessWidget {
                     children: [
                       IconButton(
                           onPressed: () {},
-                          icon: SvgPicture.asset(AppImagesPath.scanIcon)),
+                          icon: SvgPicture.asset(AppImagesPath.scanIcon,
+                              colorFilter: ColorFilter.mode(
+                                  Theme.of(context).primaryColor,
+                                  BlendMode.color))),
                       IconButton(
                           onPressed: () {},
-                          icon: SvgPicture.asset(AppImagesPath.microphoneIcon))
+                          icon: SvgPicture.asset(
+                            AppImagesPath.microphoneIcon,
+                            colorFilter: ColorFilter.mode(
+                                Theme.of(context).primaryColor,
+                                BlendMode.color),
+                          ))
                     ],
                   )),
             ),

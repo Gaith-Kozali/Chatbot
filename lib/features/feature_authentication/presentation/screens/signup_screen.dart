@@ -28,7 +28,7 @@ class SignUpScreen extends StatelessWidget {
               children: [
                 Text(
                   'Hello there',
-                  style: Theme.of(context).textTheme.displayLarge,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 29.h, bottom: 60.h),
@@ -92,7 +92,7 @@ class SignUpScreen extends StatelessWidget {
                 Center(
                     child: Text(
                   'Forget password?',
-                  style: AppFonts.inter14W500,
+                  style: Theme.of(context).textTheme.bodySmall,
                 )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -109,7 +109,7 @@ class SignUpScreen extends StatelessWidget {
                         onPressed: () {},
                         child: Text(
                           'Sign in',
-                          style: AppFonts.inter14W500,
+                          style: Theme.of(context).textTheme.bodySmall,
                         ))
                   ],
                 ),

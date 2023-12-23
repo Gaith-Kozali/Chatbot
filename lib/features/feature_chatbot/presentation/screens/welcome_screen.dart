@@ -26,7 +26,7 @@ class WelcomScreen extends StatelessWidget {
                     AppStrings.welcomeTitle,
                     textAlign: TextAlign.center,
                     maxLines: 2,
-                    style: AppFonts.inter36W500,
+                    style: Theme.of(context).textTheme.displayLarge,
                   ),
                 ),
                 GifView.network(

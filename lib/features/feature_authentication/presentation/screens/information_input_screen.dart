@@ -22,20 +22,20 @@ class InformInputScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AuthAppBar(),
+        appBar: AuthAppBar(context),
         body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 25.w).copyWith(bottom: 5.h),
           child: ConstrainedBox(
               constraints: BoxConstraints(
                   maxHeight: MediaQuery.of(context).size.longestSide -
-                      AuthAppBar().preferredSize.height),
+                      AuthAppBar(context).preferredSize.height),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Complete your profile',
-                    style: Theme.of(context).textTheme.displayLarge,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   Text(
                     'Please enter your details to complete your profile, don’t worry your details are private.',

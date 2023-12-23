@@ -45,7 +45,7 @@ class _ChatbotScreenState extends State<ChatBotScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: chatAppBar(),
+        appBar: chatAppBar(context, title: "Chat bot AI"),
         body: Column(
           children: [
             BlocBuilder<ChatbotBloc, ChatbotState>(builder: (context, state) {

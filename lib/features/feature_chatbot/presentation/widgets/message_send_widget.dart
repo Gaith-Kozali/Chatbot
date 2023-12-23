@@ -1,10 +1,9 @@
-import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MessageSendWidget extends StatelessWidget {
-   MessageSendWidget({super.key,required this.text});
+  MessageSendWidget({super.key, required this.text});
   String text;
 
   @override
@@ -21,8 +20,7 @@ class MessageSendWidget extends StatelessWidget {
               decoration: ShapeDecoration(
                 color: Theme.of(context).primaryColor,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                      const Radius.circular(20).r)
+                  borderRadius: BorderRadius.all(const Radius.circular(20).r)
                       .copyWith(bottomRight: Radius.zero),
                 ),
               ),

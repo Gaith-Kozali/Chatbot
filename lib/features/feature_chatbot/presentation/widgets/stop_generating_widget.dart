@@ -1,4 +1,3 @@
-import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +12,7 @@ class StopGeneratingWidget extends StatelessWidget {
       height: 55,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
-          side: const BorderSide(color: AppColors.black),
+          side: BorderSide(color: Theme.of(context).colorScheme.primary),
           borderRadius: BorderRadius.circular(9).r,
         ),
       ),

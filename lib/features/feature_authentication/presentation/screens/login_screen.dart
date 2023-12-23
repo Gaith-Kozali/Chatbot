@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Text(
                   'Welcome back',
-                  style: Theme.of(context).textTheme.displayLarge,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 29.h, bottom: 60.h),
@@ -90,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                 Center(
                     child: Text(
                   'Forget password?',
-                  style: AppFonts.inter14W500,
+                  style: Theme.of(context).textTheme.bodySmall,
                 )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                         onPressed: () {},
                         child: Text(
                           'Sign up',
-                          style: AppFonts.inter14W500,
+                          style: Theme.of(context).textTheme.bodySmall,
                         ))
                   ],
                 ),
