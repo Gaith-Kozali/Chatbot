@@ -62,4 +62,9 @@ class AppFonts {
     fontSize: 16.spMin,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle inter18W500 = GoogleFonts.inter(
+    color: Color(0xFF3A3A3A),
+    fontSize: 18.spMin,
+    fontWeight: FontWeight.w500,
+  );
 }

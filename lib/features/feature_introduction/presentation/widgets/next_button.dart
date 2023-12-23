@@ -1,18 +1,16 @@
 import 'dart:math';
 
+import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
 import 'package:cr/features/feature_introduction/presentation/controllers/introduction_cubit.dart';
+import 'package:cr/features/feature_introduction/presentation/screens/introduction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class NextButton extends StatefulWidget {
+class NextButton extends StatelessWidget {
   NextButton({super.key, required this.pageCount});
   int pageCount;
-  @override
-  State<NextButton> createState() => _NextButtonState();
-}
 
-class _NextButtonState extends State<NextButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -23,13 +21,16 @@ class _NextButtonState extends State<NextButton> {
             size: Size(80.r, 80.r),
             painter: Painter(
                 rotate: context.read<IntroductionCubit>().currentPage,
-                pageCount: widget.pageCount),
+                pageCount: pageCount),
           ),
           const Icon(Icons.arrow_forward_ios_outlined, color: Colors.white)
         ],
       ),
       onTap: () {
         context.read<IntroductionCubit>().nextPage();
+        if (context.read<IntroductionCubit>().currentPage == pageCount) {
+          Navigator.of(context).pushReplacementNamed(LoginScreen.route);
+        }
       },
     );
   }
@@ -63,6 +64,6 @@ class Painter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     // TODO: implement shouldRepaint
-    return true;
+    return false;
   }
 }

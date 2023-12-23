@@ -1,6 +1,7 @@
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:cr/core/constants//app_strings.dart';
+import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
 import 'package:cr/features/feature_introduction/presentation/controllers/introduction_cubit.dart';
 import 'package:cr/features/feature_introduction/presentation/widgets/down_section.dart';
 import 'package:cr/features/feature_introduction/presentation/widgets/introduction_appbar.dart';
@@ -28,6 +29,7 @@ List<Introduction> _introduction = [
 
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({super.key});
+  static const String route = "IntroductionScreen";
 
   @override
   Widget build(BuildContext context) {

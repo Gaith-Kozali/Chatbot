@@ -13,6 +13,7 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   bool isCheck = false;
   bool visible = false;
+  static const String route = "LoginScreen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

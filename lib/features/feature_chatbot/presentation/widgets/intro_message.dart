@@ -1,3 +1,4 @@
+import 'package:cr/features/feature_chatbot/presentation/screens/chatbot_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,10 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 class IntroMessage extends StatelessWidget {
   IntroMessage(this.index, {super.key});
   int index;
-  List<String> introString = [
-    'ChatGPT is an artificial-intelligence chatbot developed by Open AI',
-    'ChatGPT launched in November 2022.',
-  ];
   @override
   Widget build(BuildContext context) {
     return Padding(

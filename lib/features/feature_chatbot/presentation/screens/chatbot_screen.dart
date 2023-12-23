@@ -1,12 +1,22 @@
-import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
+import 'package:cr/features/feature_chatbot/presentation/controllers/chatbot_bloc.dart';
 import 'package:cr/features/feature_chatbot/presentation/widgets/chat_appbar.dart';
 import 'package:cr/features/feature_chatbot/presentation/widgets/intro_message.dart';
+import 'package:cr/features/feature_chatbot/presentation/widgets/message_receive_widget.dart';
+import 'package:cr/features/feature_chatbot/presentation/widgets/message_send_widget.dart';
+import 'package:cr/features/feature_chatbot/presentation/widgets/stop_generating_widget.dart';
+import 'package:cr/features/feature_chatbot/presentation/widgets/transmite_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gif_view/gif_view.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+List<String> sendMessages = [];
+
+List<String> introString = [
+  'ChatGPT is an artificial-intelligence chatbot developed by Open AI',
+  'ChatGPT launched in November 2022.',
+];
 
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({super.key});
@@ -16,114 +26,72 @@ class ChatBotScreen extends StatefulWidget {
 }
 
 class _ChatbotScreenState extends State<ChatBotScreen> {
-  bool firstSend = false;
+  late bool displayIntro;
+  late bool displayImage;
+  late int displaySendMes;
+  late int displayReceiveMes;
+  List<String> receiveMessages = [];
+
+  int itemCountCalculate() {
+    return displayIntro ? introString.length : sendMessages.length;
+  }
+
+  void initDisplay(int index) {
+    displaySendMes = sendMessages.length - (index + 1);
+    displayReceiveMes = receiveMessages.length - (index + 1);
+    displayImage = index == 0 && displayIntro;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: chatAppBar(),
-      body: Column(
-        children: [
-          Expanded(
-              child: ListView.builder(
-                reverse: true,
-            padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 11.w),
-            itemCount: 2,
-            itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  firstSend
-                      ? IntroMessage(index)
-                      : 
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 25.h),
-                    child:  Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(20),
-                            width: 310.w,
-                            decoration: ShapeDecoration(
-                              color: const Color(0xFF11122C),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                    const Radius.circular(20).r)
-                                    .copyWith(bottomRight: Radius.zero),
-                              ),
-                            ),
-                            child:Text(
-                                'Hello ! there',
-                                style: AppFonts.inter16W400,
-                              ),
-                          ),
-                          SizedBox(
-                            width: 5.w,
-                          ),
-                          CircleAvatar(
-                            radius: 13.r,
-                            backgroundColor: Colors.red,
-                          )
-                        ]),
-                  ),
-                ],
-              );
-            },
-          )),
-          SizedBox(
-            height: 60,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: 340.w,
-                  child: TextFormField(
-                    style: AppFonts.inter16W700,
-                    decoration: InputDecoration(
-                        fillColor: Color(0x334D4C66),
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(17).r,
-                            borderSide: BorderSide.none),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(17).r,
-                            borderSide: BorderSide.none),
-                        hintText: 'Ask me anything... ',
-                        suffixIcon: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                                onPressed: () {},
-                                icon: SvgPicture.asset(AppImagesPath.scanIcon)),
-                            IconButton(
-                                onPressed: () {},
-                                icon: SvgPicture.asset(
-                                    AppImagesPath.microphoneIcon))
-                          ],
-                        )),
-                  ),
-                ),
-                GestureDetector(
-                    onTap: () {},
-                    child: CircleAvatar(
-                      backgroundColor: const Color(0xFF11122C),
-                      radius: 27.h,
-                      child: SvgPicture.asset(AppImagesPath.sendIcon),
-                    ))
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          )
-        ],
-      ),
-    );
+        appBar: chatAppBar(),
+        body: Column(
+          children: [
+            BlocBuilder<ChatbotBloc, ChatbotState>(builder: (context, state) {
+              displayIntro = sendMessages.isEmpty;
+              if (state is ReceiveAnswerState) {
+                receiveMessages.add(state.answer);
+              }
+
+              return Expanded(
+                  child: ListView.builder(
+                reverse: !displayIntro,
+                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 11.w),
+                itemCount: itemCountCalculate(),
+                itemBuilder: (context, index) {
+                  initDisplay(index);
+                  return Column(
+                    children: [
+                      displayImage
+                          ? (GifView.network(
+                              AppImagesPath.welcomePicture,
+                              height: 272.h,
+                              width: 236.w,
+                            ))
+                          : const SizedBox(),
+                      displayIntro
+                          ? IntroMessage(index)
+                          : MessageSendWidget(
+                              text: sendMessages[displaySendMes]),
+                      (receiveMessages.length > index)
+                          ? MessageReceiveWidget(
+                              title: receiveMessages[displayReceiveMes],
+                            )
+                          : SizedBox(),
+                      (state is WaitingState && index == 0)
+                          ? const StopGeneratingWidget()
+                          : SizedBox()
+                    ],
+                  );
+                },
+              ));
+            }),
+            TransmiteField(),
+            const SizedBox(
+              height: 10,
+            )
+          ],
+        ));
   }
 }
-
-// GifView.network(
-// AppImagesPath.welcomePicture,
-// height: 272.h,
-// width: 236.w,
-// ),

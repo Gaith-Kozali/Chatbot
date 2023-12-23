@@ -1,6 +1,11 @@
 import 'package:cr/features/feature_authentication/presentation/screens/information_input_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/signup_screen.dart';
+import 'package:cr/features/feature_chatbot/data/data/chatbot_remote_data.dart';
+import 'package:cr/features/feature_chatbot/data/repositories/repository_imp.dart';
+import 'package:cr/features/feature_chatbot/domain/repositories/chatbot_repositories.dart';
+import 'package:cr/features/feature_chatbot/domain/use_cases/chatAi_useCase.dart';
+import 'package:cr/features/feature_chatbot/presentation/controllers/chatbot_bloc.dart';
 import 'package:cr/features/feature_chatbot/presentation/screens/chatbot_screen.dart';
 import 'package:cr/features/feature_chatbot/presentation/screens/welcome_screen.dart';
 import 'package:cr/features/feature_introduction/presentation/controllers/introduction_cubit.dart';
@@ -11,7 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/feature_introduction/presentation/screens/introduction_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -28,9 +33,19 @@ class MyApp extends StatelessWidget {
         builder: (_, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
+            routes: {
+              IntroductionScreen.route: (context) => IntroductionScreen(),
+              LoginScreen.route:(context) => LoginScreen()
+            },
             home: MultiBlocProvider(providers: [
-              BlocProvider(create: (context) => IntroductionCubit())
-            ], child: ChatBotScreen()),
+              BlocProvider(create: (context) => IntroductionCubit()),
+              BlocProvider(
+                create: (context) => ChatbotBloc(
+                    chatWithAiUseCase: ChatWithAiUseCase(
+                        chatBotRepository: ChatBotRepositoryImp(
+                            chatBotRemoteData: ChatBotRemoteDataImp()))),
+              )
+            ], child: IntroductionScreen()),
           );
         });
   }
