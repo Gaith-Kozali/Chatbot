@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:cr/features/feature_chatbot/presentation/controllers/chatbot_bloc.dart';
@@ -10,6 +11,12 @@ import 'package:flutter_svg/svg.dart';
 class TransmiteField extends StatelessWidget {
   TransmiteField({super.key});
   TextEditingController textEditingController = TextEditingController();
+  void sendMes(BuildContext context) {
+    BlocProvider.of<ChatbotBloc>(context)
+        .add(SendMessageEvent(text: textEditingController.text));
+    textEditingController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -23,7 +30,7 @@ class TransmiteField extends StatelessWidget {
               controller: textEditingController,
               style: AppFonts.inter16W700,
               decoration: InputDecoration(
-                  fillColor: Color(0x334D4C66),
+                  fillColor: Theme.of(context).colorScheme.secondary,
                   filled: true,
                   enabledBorder: _inputBorder,
                   focusedBorder: _inputBorder,
@@ -42,13 +49,9 @@ class TransmiteField extends StatelessWidget {
             ),
           ),
           GestureDetector(
-              onTap: () {
-                BlocProvider.of<ChatbotBloc>(context)
-                    .add(SendMessageEvent(text: textEditingController.text));
-                textEditingController.clear();
-              },
+              onTap: () => sendMes(context),
               child: CircleAvatar(
-                backgroundColor: const Color(0xFF11122C),
+                backgroundColor: Theme.of(context).primaryColor,
                 radius: 27.h,
                 child: SvgPicture.asset(AppImagesPath.sendIcon),
               ))

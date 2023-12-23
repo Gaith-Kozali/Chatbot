@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/information_input_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/signup_screen.dart';
@@ -9,6 +10,8 @@ import 'package:cr/features/feature_chatbot/presentation/controllers/chatbot_blo
 import 'package:cr/features/feature_chatbot/presentation/screens/chatbot_screen.dart';
 import 'package:cr/features/feature_chatbot/presentation/screens/welcome_screen.dart';
 import 'package:cr/features/feature_introduction/presentation/controllers/introduction_cubit.dart';
+import 'package:cr/features/feature_setting/presentation/controllers/setting_bloc.dart';
+import 'package:cr/features/feature_setting/presentation/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,22 +34,40 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         // Use builder only if you need to use library outside ScreenUtilInit context
         builder: (_, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            routes: {
-              IntroductionScreen.route: (context) => IntroductionScreen(),
-              LoginScreen.route:(context) => LoginScreen()
-            },
-            home: MultiBlocProvider(providers: [
-              BlocProvider(create: (context) => IntroductionCubit()),
-              BlocProvider(
-                create: (context) => ChatbotBloc(
-                    chatWithAiUseCase: ChatWithAiUseCase(
-                        chatBotRepository: ChatBotRepositoryImp(
-                            chatBotRemoteData: ChatBotRemoteDataImp()))),
-              )
-            ], child: IntroductionScreen()),
-          );
+          return MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (context) => IntroductionCubit()),
+                BlocProvider(
+                  create: (context) => ChatbotBloc(
+                      chatWithAiUseCase: ChatWithAiUseCase(
+                          chatBotRepository: ChatBotRepositoryImp(
+                              chatBotRemoteData: ChatBotRemoteDataImp()))),
+                ),
+                BlocProvider(
+                  create: (context) => SettingBloc(),
+                )
+              ],
+              child: BlocBuilder<SettingBloc, SettingState>(
+                builder: (context, state) {
+                  return MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    theme: ThemeData(
+                        primaryColor: AppColors.blue,
+                        dividerColor: AppColors.white,
+                        colorScheme: const ColorScheme.dark(
+                          primary: AppColors.whiteIntroDark,
+                          secondary: AppColors.serverBlue,
+                          background: Color(0XFF21252F),
+                        )),
+                    routes: {
+                      IntroductionScreen.route: (context) =>
+                          IntroductionScreen(),
+                      LoginScreen.route: (context) => LoginScreen()
+                    },
+                    home: IntroductionScreen(),
+                  );
+                },
+              ));
         });
   }
 }

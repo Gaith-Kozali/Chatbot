@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_decoration.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
@@ -28,22 +29,25 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Text(
                   'Welcome back',
-                  style: AppFonts.inter20W600,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 29.h, bottom: 60.h),
                   child: Text('Please enter you email & password to sign in',
-                      style: AppFonts.inter14W400),
+                      style: Theme.of(context).textTheme.displaySmall),
                 ),
                 Text(
                   'Email',
-                  style: AppFonts.inter14W600,
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
                 SizedBox(
                   width: 378.w,
                   child: TextFormField(
-                    decoration: AppDecoration.inputDecoration().copyWith(
-                        suffixIcon: SvgPicture.asset(AppImagesPath.emailIcon)),
+                    decoration: AppDecoration(context)
+                        .inputDecoration()
+                        .copyWith(
+                            suffixIcon:
+                                SvgPicture.asset(AppImagesPath.emailIcon)),
                   ),
                 ),
                 SizedBox(
@@ -51,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Text(
                   'Password',
-                  style: AppFonts.inter14W600,
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
                 StatefulBuilder(
                   builder: (context, setState) {
@@ -59,18 +63,19 @@ class LoginScreen extends StatelessWidget {
                       width: 378.w,
                       child: TextFormField(
                         obscureText: visible,
-                        decoration: AppDecoration.inputDecoration().copyWith(
-                            hintText: "Password",
-                            suffixIcon: InkWell(
-                              child: SvgPicture.asset(visible
-                                  ? AppImagesPath.eyeOffIcon
-                                  : AppImagesPath.eyeIcon),
-                              onTap: () {
-                                setState(() {
-                                  visible = !visible;
-                                });
-                              },
-                            )),
+                        decoration:
+                            AppDecoration(context).inputDecoration().copyWith(
+                                hintText: "Password",
+                                suffixIcon: InkWell(
+                                  child: SvgPicture.asset(visible
+                                      ? AppImagesPath.eyeOffIcon
+                                      : AppImagesPath.eyeIcon),
+                                  onTap: () {
+                                    setState(() {
+                                      visible = !visible;
+                                    });
+                                  },
+                                )),
                       ),
                     );
                   },
@@ -80,6 +85,7 @@ class LoginScreen extends StatelessWidget {
                     padding: EdgeInsets.only(top: 42.h, bottom: 21.h),
                     child: AuthenticButton(
                       title: "Login",
+                      color: Theme.of(context).primaryColor,
                     )),
                 Center(
                     child: Text(
@@ -92,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       'Don’t have an account?',
                       style: AppFonts.inter14W500
-                          .copyWith(color: Color(0xC63A3A3A)),
+                          .copyWith(color: AppColors.lightBlack),
                     ),
                     TextButton(
                         style: ButtonStyle(
@@ -107,7 +113,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 24.h, top: 60.h),
-                  child: Div(),
+                  child: Div(context),
                 ),
                 const OtherLogin(),
               ],

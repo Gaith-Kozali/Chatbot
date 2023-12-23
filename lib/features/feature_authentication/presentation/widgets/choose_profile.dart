@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,10 +29,11 @@ class _ChooseProfileState extends State<ChooseProfile> {
                     height: 20.w,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10).w,
-                        color: const Color(0XFF3A3A3A)),
+                        color: AppColors.lightBlack),
                     child: Icon(
                       Icons.edit,
                       size: 15.w,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                   onTap: () {},

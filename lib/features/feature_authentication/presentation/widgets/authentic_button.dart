@@ -1,10 +1,10 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthenticButton extends StatelessWidget {
-  AuthenticButton(
-      {super.key, required this.title, this.color = const Color(0xFF12132D)});
+  AuthenticButton({super.key, required this.title, required this.color});
   String title;
   Color color;
   @override

@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/authentic_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,9 +13,14 @@ class InfoButtons extends StatelessWidget {
       children: [
         SizedBox(
             width: 182.w,
-            child:
-                AuthenticButton(title: "Skip", color: const Color(0x3011122C))),
-        SizedBox(width: 182.w, child: AuthenticButton(title: "Signup")),
+            child: AuthenticButton(
+                title: "Skip", color: Theme.of(context).colorScheme.secondary)),
+        SizedBox(
+            width: 182.w,
+            child: AuthenticButton(
+              title: "Signup",
+              color: Theme.of(context).primaryColor,
+            )),
       ],
     );
   }

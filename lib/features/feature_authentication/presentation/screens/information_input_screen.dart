@@ -1,9 +1,10 @@
+import 'dart:js';
+
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_decoration.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/auth_appbar.dart';
-
-import 'package:cr/features/feature_authentication/presentation/widgets/authentic_button.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/choose_profile.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/info_buttons.dart';
 import 'package:flutter/material.dart';
@@ -34,11 +35,11 @@ class InformInputScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Complete your profile',
-                    style: AppFonts.inter20W600,
+                    style: Theme.of(context).textTheme.displayLarge,
                   ),
                   Text(
                     'Please enter your details to complete your profile, don’t worry your details are private.',
-                    style: AppFonts.inter14W400,
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                   const Center(
                     child: ChooseProfile(),
@@ -48,35 +49,38 @@ class InformInputScreen extends StatelessWidget {
                   ),
                   Text(
                     'Full name',
-                    style: AppFonts.inter14W600,
+                    style: Theme.of(context).textTheme.labelSmall,
                   ),
                   SizedBox(
                     width: 378.w,
                     child: TextFormField(
-                      decoration: AppDecoration.inputDecoration().copyWith(
-                        hintText: "Full name",
-                      ),
+                      decoration:
+                          AppDecoration(context).inputDecoration().copyWith(
+                                hintText: "Full name",
+                              ),
                     ),
                   ),
                   Text(
                     'Phone',
-                    style: AppFonts.inter14W600,
+                    style: Theme.of(context).textTheme.labelSmall,
                   ),
                   SizedBox(
                     width: 378.w,
                     child: TextFormField(
-                      decoration: AppDecoration.inputDecoration().copyWith(
-                        hintText: "Your phone number",
-                        suffixIcon: SvgPicture.asset(AppImagesPath.phoneIcon),
-                        prefixIcon: _choosePhoneCode(),
-                      ),
+                      decoration:
+                          AppDecoration(context).inputDecoration().copyWith(
+                                hintText: "Your phone number",
+                                suffixIcon:
+                                    SvgPicture.asset(AppImagesPath.phoneIcon),
+                                prefixIcon: _choosePhoneCode(context),
+                              ),
                     ),
                   ),
                   Text(
                     'Gender',
-                    style: AppFonts.inter14W600,
+                    style: Theme.of(context).textTheme.labelSmall,
                   ),
-                  _chooseGender(),
+                  _chooseGender(context),
                   SizedBox(
                     height: 50.h,
                   ),
@@ -87,7 +91,7 @@ class InformInputScreen extends StatelessWidget {
   }
 }
 
-DropdownButton2 _choosePhoneCode() => DropdownButton2(
+DropdownButton2 _choosePhoneCode(BuildContext context) => DropdownButton2(
     onChanged: (value) {
       _phoneCode = value!;
     },
@@ -95,9 +99,10 @@ DropdownButton2 _choosePhoneCode() => DropdownButton2(
         .map((e) => DropdownMenuItem(
               value: e,
               child: Container(
-                  decoration: const BoxDecoration(
-                      border:
-                          Border(bottom: BorderSide(color: Color(0xFF11122C)))),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(
+                              color: Theme.of(context).primaryColor))),
                   child: Center(
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +120,7 @@ DropdownButton2 _choosePhoneCode() => DropdownButton2(
       padding: EdgeInsets.zero,
       maxHeight: 120,
       width: 203.w,
-      decoration: AppDecoration.dropDownBox,
+      decoration: AppDecoration(context).dropDownBox(),
     ),
     menuItemStyleData: const MenuItemStyleData(
       padding: EdgeInsets.zero,
@@ -129,7 +134,7 @@ DropdownButton2 _choosePhoneCode() => DropdownButton2(
             const Icon(Icons.arrow_drop_down_outlined)
           ],
         )));
-SizedBox _chooseGender() => SizedBox(
+SizedBox _chooseGender(BuildContext context) => SizedBox(
       width: 378.w,
       child: DropdownButtonFormField2(
         value: _gender,
@@ -140,9 +145,10 @@ SizedBox _chooseGender() => SizedBox(
             .map((e) => DropdownMenuItem(
                   value: e,
                   child: Container(
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(color: Color(0xFF11122C)))),
+                              bottom: BorderSide(
+                                  color: Theme.of(context).primaryColor))),
                       child: Center(
                         child: Text(e),
                       )),
@@ -153,7 +159,7 @@ SizedBox _chooseGender() => SizedBox(
           padding: EdgeInsets.zero,
           width: 203.w,
           maxHeight: 80,
-          decoration: AppDecoration.dropDownBox,
+          decoration: AppDecoration(context).dropDownBox(),
         ),
         menuItemStyleData:
             const MenuItemStyleData(height: 80 / 2, padding: EdgeInsets.zero),

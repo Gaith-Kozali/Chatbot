@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/features/feature_introduction/introduction.dart';
 import 'package:cr/features/feature_introduction/presentation/controllers/introduction_cubit.dart';
 import 'package:cr/features/feature_introduction/presentation/widgets/next_button.dart';
@@ -36,13 +37,13 @@ Widget _point(BuildContext context, {required int pageCount}) {
             (index) => index == context.read<IntroductionCubit>().currentPage
                 ? Container(
                     decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(cuPointWidth).w),
                     width: cuPointWidth,
                   )
                 : Container(
                     decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: AppColors.darkWhite,
                         borderRadius: BorderRadius.circular(10).w),
                     width: 10.w,
                   )),

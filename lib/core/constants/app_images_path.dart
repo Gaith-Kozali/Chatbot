@@ -25,4 +25,10 @@ class AppImagesPath {
   static const String welcomePicture =
       "https://s3-alpha-sig.figma.com/img/31c7/6bcf/37787b8368b854525035f37802127c82?Expires=1704067200&Signature=p9fNFJuhxY6huiiPXbx11ilfMLHx7mKBdX6R3cpLxiVXmh4fPMoCFotsSJZJacAsNDaSPFHIZFILtMHJTfuJgB~n5Ce0rpwZgZIctQIr1E8lR36Hyaksohe~BWRoJg53X54y0nJyBKPGs5jpOjdxlvaGv4tg2haKQaPY~tcxwCsN8HJNBoVFxSdjD~ucDuf9punskJgtmBtEvy2DQErmReL6nVgAwus2hTtepHVEYLvIeKp4fRzs8tIhrxCm8PcwfmnwNQmYDqaDZ73OLykQ4aEFFlvyz45bIG0arWg3r9Fn3c64ruWUhrDaK0BCAABv6x6Gz9mAEixtK4-z5k97NQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   static const String aiBot = "assets/bot.png";
+
+  static const Map<String, String> theme = {
+    "System": "assets/theme/system.svg",
+    "Dark": "assets/theme/dark.svg",
+    "Light": "assets/theme/light.svg"
+  };
 }

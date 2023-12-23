@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +11,7 @@ Widget CheckWidget(bool isCheck, String title) {
         child: CheckboxListTile(
           controlAffinity: ListTileControlAffinity.leading,
           contentPadding: EdgeInsets.zero,
-          activeColor: Color(0xFF12132D),
+          activeColor: Theme.of(context).primaryColor,
           value: isCheck,
           onChanged: (value) {
             setState(() {

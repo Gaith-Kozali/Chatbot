@@ -1,8 +1,7 @@
 import 'dart:math';
-
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
 import 'package:cr/features/feature_introduction/presentation/controllers/introduction_cubit.dart';
-import 'package:cr/features/feature_introduction/presentation/screens/introduction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,11 +18,12 @@ class NextButton extends StatelessWidget {
         children: [
           CustomPaint(
             size: Size(80.r, 80.r),
-            painter: Painter(
+            painter: Painter(context,
                 rotate: context.read<IntroductionCubit>().currentPage,
                 pageCount: pageCount),
           ),
-          const Icon(Icons.arrow_forward_ios_outlined, color: Colors.white)
+          Icon(Icons.arrow_forward_ios_outlined,
+              color: Theme.of(context).primaryColor)
         ],
       ),
       onTap: () {
@@ -37,14 +37,15 @@ class NextButton extends StatelessWidget {
 }
 
 class Painter extends CustomPainter {
-  Painter({required this.rotate, required this.pageCount});
+  Painter(this.context, {required this.rotate, required this.pageCount});
+  BuildContext context;
   int rotate;
   int pageCount;
   @override
   void paint(Canvas canvas, Size size) {
     double sweepAngle = rotate * (pi / (pageCount / 2));
     Offset offset = Offset(size.width / 2, size.height / 2);
-    Paint paint = Paint()..color = Colors.black;
+    Paint paint = Paint()..color = Theme.of(context).colorScheme.primary;
     Paint outPaint = Paint()
       ..color = Colors.black38
       ..style = PaintingStyle.stroke
@@ -57,8 +58,12 @@ class Painter extends CustomPainter {
     canvas.drawCircle(offset, size.width / 2, outPaint);
 
     //draw the foreground Painter of out circle
-    canvas.drawArc(Rect.fromCircle(center: offset, radius: size.width / 2),
-        (3 * pi) / 2, sweepAngle, false, outPaint..color = Colors.black);
+    canvas.drawArc(
+        Rect.fromCircle(center: offset, radius: size.width / 2),
+        (3 * pi) / 2,
+        sweepAngle,
+        false,
+        outPaint..color = Theme.of(context).colorScheme.primary);
   }
 
   @override

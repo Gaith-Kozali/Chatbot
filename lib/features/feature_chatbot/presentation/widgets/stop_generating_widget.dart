@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,16 +13,16 @@ class StopGeneratingWidget extends StatelessWidget {
       height: 55,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
-          side: const BorderSide(color: Color(0xFF3A3A3A)),
+          side: const BorderSide(color: AppColors.black),
           borderRadius: BorderRadius.circular(9).r,
         ),
       ),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         IconButton(
           onPressed: () {},
-          icon: const Icon(
+          icon: Icon(
             Icons.stop,
-            color: Color(0xFF11122C),
+            color: Theme.of(context).primaryColor,
           ),
         ),
         Text('Stop generating...', style: AppFonts.inter18W500)

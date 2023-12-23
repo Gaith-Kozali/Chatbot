@@ -4,7 +4,6 @@ import 'package:cr/core/constants/app_strings.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/authentic_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gif_view/gif_view.dart';
 
 class WelcomScreen extends StatelessWidget {
@@ -41,7 +40,9 @@ class WelcomScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   width: 339.w,
-                  child: AuthenticButton(title: "Start chat"),
+                  child: AuthenticButton(
+                      title: "Start chat",
+                      color: Theme.of(context).primaryColor),
                 )
               ],
             ))),

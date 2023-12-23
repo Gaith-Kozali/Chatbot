@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,8 @@ PreferredSizeWidget chatAppBar() {
         kToolbarHeight + 1), // Adjust the height as needed
     child: Container(
       decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.black, width: 1)),
+        border:
+            Border(bottom: BorderSide(color: AppColors.lightBlack, width: 1)),
       ),
       child: AppBar(
         elevation: 0,

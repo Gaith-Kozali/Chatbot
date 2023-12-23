@@ -1,3 +1,4 @@
+import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class MessageReceiveWidget extends StatelessWidget {
       child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
         CircleAvatar(
           radius: 13.r,
-          backgroundImage: AssetImage(AppImagesPath.aiBot),
+          backgroundImage: const AssetImage(AppImagesPath.aiBot),
           backgroundColor: Colors.transparent,
         ),
         SizedBox(
@@ -23,7 +24,7 @@ class MessageReceiveWidget extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           width: 310.w,
           decoration: ShapeDecoration(
-            color: const Color(0x334D4C66),
+            color: Theme.of(context).colorScheme.secondary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(const Radius.circular(20).r)
                   .copyWith(bottomLeft: Radius.zero),
@@ -31,7 +32,7 @@ class MessageReceiveWidget extends StatelessWidget {
           ),
           child: Text(
             title,
-            style: AppFonts.inter16W400.copyWith(color: Color(0xFF11122C)),
+            style: AppFonts.inter16W400.copyWith(color: AppColors.black),
           ),
         ),
         SizedBox(

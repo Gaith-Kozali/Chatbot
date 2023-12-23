@@ -1,7 +1,6 @@
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:cr/core/constants//app_strings.dart';
-import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
 import 'package:cr/features/feature_introduction/presentation/controllers/introduction_cubit.dart';
 import 'package:cr/features/feature_introduction/presentation/widgets/down_section.dart';
 import 'package:cr/features/feature_introduction/presentation/widgets/introduction_appbar.dart';
@@ -35,7 +34,7 @@ class IntroductionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: introductionAppBar(),
+      appBar: introductionAppBar(context),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -64,14 +63,15 @@ class IntroductionScreen extends StatelessWidget {
                       child: SizedBox(
                           width: 378.w,
                           child: Text(_introduction[index].title,
-                              maxLines: 2, style: AppFonts.inter32W700)),
+                              maxLines: 2,
+                              style: Theme.of(context).textTheme.titleLarge)),
                     ),
                     SizedBox(
                       width: 378.w,
                       child: Text(
                         _introduction[index].description,
                         maxLines: 3,
-                        style: AppFonts.inter16W500,
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ),
                   ],

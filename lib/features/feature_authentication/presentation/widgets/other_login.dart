@@ -11,22 +11,23 @@ class OtherLogin extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _other(AppImagesPath.facebookIcon),
-        _other(AppImagesPath.googleIcon),
-        _other(AppImagesPath.appleIcon)
+        _other(AppImagesPath.facebookIcon, context),
+        _other(AppImagesPath.googleIcon, context),
+        _other(AppImagesPath.appleIcon, context)
       ],
     );
   }
 }
 
-_other(String imagePath) => InkWell(
+_other(String imagePath, BuildContext context) => InkWell(
       child: Container(
         width: 110.w,
         height: 55.h,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1, color: Color(0xFFEFEEEE)),
-            borderRadius: BorderRadius.circular(110),
+            side: BorderSide(
+                width: 1, color: Theme.of(context).colorScheme.primary),
+            borderRadius: BorderRadius.circular(110).r,
           ),
         ),
         child: SvgPicture.asset(imagePath),
