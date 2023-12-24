@@ -1,8 +1,4 @@
-import 'dart:js';
-
-import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_decoration.dart';
-import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/auth_appbar.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/choose_profile.dart';

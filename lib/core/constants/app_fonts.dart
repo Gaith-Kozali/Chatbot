@@ -60,7 +60,7 @@ class AppFonts {
   );
   static TextStyle inter16W700 = GoogleFonts.inter(
     color: Color(0xFF3A3A3A),
-    fontSize: 16,
+    fontSize: 16.spMin,
     fontWeight: FontWeight.w700,
   );
   static TextStyle inter16W400 = GoogleFonts.inter(
@@ -75,7 +75,7 @@ class AppFonts {
   );
   static TextStyle inter15W400 = GoogleFonts.inter(
     color: Colors.white,
-    fontSize: 15,
+    fontSize: 15.spMin,
     fontWeight: FontWeight.w400,
   );
 }

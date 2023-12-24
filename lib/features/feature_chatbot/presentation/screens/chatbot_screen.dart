@@ -12,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_view/gif_view.dart';
 
 List<String> sendMessages = [];
-
+List<String> receiveMessages = [];
 List<String> introString = [
   'ChatGPT is an artificial-intelligence chatbot developed by Open AI',
   'ChatGPT launched in November 2022.',
@@ -25,7 +25,7 @@ class ChatBotScreen extends StatelessWidget {
   late bool displayImage;
   late int displaySendMes;
   late int displayReceiveMes;
-  List<String> receiveMessages = [];
+  late bool displayRec;
 
   int itemCountCalculate() {
     return displayIntro ? introString.length : sendMessages.length;
@@ -45,6 +45,7 @@ class ChatBotScreen extends StatelessWidget {
           children: [
             BlocBuilder<ChatbotBloc, ChatbotState>(builder: (context, state) {
               displayIntro = sendMessages.isEmpty;
+
               if (state is ReceiveAnswerState) {
                 receiveMessages.add(state.answer);
               }
@@ -56,6 +57,8 @@ class ChatBotScreen extends StatelessWidget {
                 itemCount: itemCountCalculate(),
                 itemBuilder: (context, index) {
                   initDisplay(index);
+                  displayRec = (receiveMessages.length > index &&
+                      (state is ReceiveAnswerState || state is WaitingState));
                   return Column(
                     children: [
                       displayImage
@@ -69,7 +72,7 @@ class ChatBotScreen extends StatelessWidget {
                           ? IntroMessage(index)
                           : MessageSendWidget(
                               text: sendMessages[displaySendMes]),
-                      (receiveMessages.length > index)
+                      displayRec
                           ? MessageReceiveWidget(
                               title: receiveMessages[displayReceiveMes],
                             )

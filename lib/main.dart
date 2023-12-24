@@ -1,12 +1,9 @@
-import 'package:cr/core/constants/app_colors.dart';
-import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_theme.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/information_input_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/signup_screen.dart';
 import 'package:cr/features/feature_chatbot/data/data/chatbot_remote_data.dart';
 import 'package:cr/features/feature_chatbot/data/repositories/repository_imp.dart';
-import 'package:cr/features/feature_chatbot/domain/repositories/chatbot_repositories.dart';
 import 'package:cr/features/feature_chatbot/domain/use_cases/chatAi_useCase.dart';
 import 'package:cr/features/feature_chatbot/presentation/controllers/chatbot_bloc.dart';
 import 'package:cr/features/feature_chatbot/presentation/screens/chatbot_screen.dart';

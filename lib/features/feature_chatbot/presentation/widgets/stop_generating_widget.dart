@@ -8,7 +8,7 @@ class StopGeneratingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 210.w,
+      width: 220,
       height: 55,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
@@ -16,16 +16,21 @@ class StopGeneratingWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(9).r,
         ),
       ),
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+      child: Center(
+          child: Row(children: [
         IconButton(
           onPressed: () {},
           icon: Icon(
             Icons.stop,
             color: Theme.of(context).primaryColor,
+            size: 18,
           ),
         ),
-        Text('Stop generating...', style: AppFonts.inter18W500)
-      ]),
+        Text(
+          'Stop generating..',
+          style: AppFonts.inter18W500,
+        )
+      ])),
     );
   }
 }

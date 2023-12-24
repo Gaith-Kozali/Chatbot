@@ -29,7 +29,7 @@ class NextButton extends StatelessWidget {
       onTap: () {
         context.read<IntroductionCubit>().nextPage();
         if (context.read<IntroductionCubit>().currentPage == pageCount) {
-          Navigator.of(context).pushNamed(LoginScreen.route);
+          Navigator.of(context).pushReplacementNamed(LoginScreen.route);
         }
       },
     );

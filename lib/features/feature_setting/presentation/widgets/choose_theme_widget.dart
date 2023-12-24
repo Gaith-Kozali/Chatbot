@@ -85,7 +85,7 @@ DropdownButton2 _chooseTheme(BuildContext context) => DropdownButton2(
       ),
       dropdownStyleData: DropdownStyleData(
         padding: EdgeInsets.zero,
-        width: 133.w,
+        width: 180.w,
         decoration: AppDecoration(context).dropDownBox(),
       ),
     );
