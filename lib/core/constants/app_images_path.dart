@@ -1,3 +1,5 @@
+import 'package:cr/core/constants/app_theme.dart';
+
 class AppImagesPath {
   static const List<String> intro = [
     "https://s3-alpha-sig.figma.com/img/754c/eb92/633091fa2e87acacaa6753c96a6e63ed?Expires=1704067200&Signature=bZuwryfRqeliQqkmWe-daBjjcKEilGE9D3e5gpwPn4sHT4Fzg01k-X68BpxKeoGOd2~Q9LzvyKycyGEZyJ0CzMtYjjrQ~vH06fCf84gkp6ez1~dRFaygS2CSAMZx8zqKZrNMQAV8KRf1IsCYtYvcwIs4n1xsmkOyOK-BI2HOzsT0I1z5zHySD7QzewqSn3nTaphln7Gl2~XrSxZMH4gWCVAvYL3bDTEjNJHwZfJKdaNE7GxhyRfKMRZ4pRDOg4QLYsvpVT1TkGYLfvjiWfs97U-GxeypzbsmLemufU4qBYEOxPDhGyLsGIrvNZ~I0ePSW49~t6m9OwVI~ce4FdIOuw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
@@ -25,10 +27,10 @@ class AppImagesPath {
   static const String welcomePicture =
       "https://s3-alpha-sig.figma.com/img/31c7/6bcf/37787b8368b854525035f37802127c82?Expires=1704067200&Signature=p9fNFJuhxY6huiiPXbx11ilfMLHx7mKBdX6R3cpLxiVXmh4fPMoCFotsSJZJacAsNDaSPFHIZFILtMHJTfuJgB~n5Ce0rpwZgZIctQIr1E8lR36Hyaksohe~BWRoJg53X54y0nJyBKPGs5jpOjdxlvaGv4tg2haKQaPY~tcxwCsN8HJNBoVFxSdjD~ucDuf9punskJgtmBtEvy2DQErmReL6nVgAwus2hTtepHVEYLvIeKp4fRzs8tIhrxCm8PcwfmnwNQmYDqaDZ73OLykQ4aEFFlvyz45bIG0arWg3r9Fn3c64ruWUhrDaK0BCAABv6x6Gz9mAEixtK4-z5k97NQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   static const String aiBot = "assets/bot.png";
-
-  static const Map<String, String> theme = {
-    "System": "assets/theme/system.svg",
-    "Dark": "assets/theme/dark.svg",
-    "Light": "assets/theme/light.svg"
+  static const String avatar = "assets/avatar.png";
+  static Map<AppTheme, String> theme = {
+    AppTheme.system: "assets/theme/system.svg",
+    AppTheme.dark: "assets/theme/dark.svg",
+    AppTheme.light: "assets/theme/light.svg"
   };
 }

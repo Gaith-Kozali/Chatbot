@@ -28,7 +28,7 @@ List<Introduction> _introduction = [
 
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({super.key});
-  static const String route = "IntroductionScreen";
+
 
   @override
   Widget build(BuildContext context) {

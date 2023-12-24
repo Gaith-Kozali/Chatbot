@@ -2,10 +2,12 @@ import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_decoration.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
+import 'package:cr/features/feature_authentication/presentation/screens/signup_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/authentic_button.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/check_widget.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/div.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/other_login.dart';
+import 'package:cr/features/feature_chatbot/presentation/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -86,6 +88,9 @@ class LoginScreen extends StatelessWidget {
                     child: AuthenticButton(
                       title: "Login",
                       color: Theme.of(context).primaryColor,
+                      func: () {
+                        Navigator.pushNamed(context, WelcomeScreen.route);
+                      },
                     )),
                 Center(
                     child: Text(
@@ -104,7 +109,9 @@ class LoginScreen extends StatelessWidget {
                         style: ButtonStyle(
                             overlayColor: MaterialStateProperty.all<Color>(
                                 Colors.transparent)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, SignUpScreen.route);
+                        },
                         child: Text(
                           'Sign up',
                           style: Theme.of(context).textTheme.bodySmall,

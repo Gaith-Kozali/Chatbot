@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingWidget extends StatelessWidget {
-  const SettingWidget({super.key});
-
+  SettingWidget(
+      {super.key,
+      required this.text,
+      required this.buttonTitle,
+      required this.func});
+  String text;
+  String buttonTitle;
+  VoidCallback func;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,8 +27,8 @@ class SettingWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'chat history & training',
-              style: AppFonts.inter20W600,
+              text,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             SizedBox(
                 width: 113.w,
@@ -35,14 +41,14 @@ class SettingWidget extends StatelessWidget {
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12).r,
-                            side: BorderSide(color: Theme.of(context).primaryColor)
-                          ),
+                              borderRadius: BorderRadius.circular(12).r,
+                              side: BorderSide(
+                                  color: Theme.of(context).primaryColor)),
                         )),
-                    onPressed: () {},
-                    child: Text('Export',
-                        style: AppFonts.inter15W400
-                            .copyWith(color: const Color(0xFF11122C)))))
+                    onPressed: func,
+                    child: Text(buttonTitle,
+                        style: AppFonts.inter15W400.copyWith(
+                            color: Theme.of(context).colorScheme.primary))))
           ],
         ));
   }

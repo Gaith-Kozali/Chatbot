@@ -1,14 +1,14 @@
-import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
 import 'package:cr/core/constants/app_strings.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/authentic_button.dart';
+import 'package:cr/features/feature_chatbot/presentation/screens/chatbot_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_view/gif_view.dart';
 
-class WelcomScreen extends StatelessWidget {
-  const WelcomScreen({super.key});
-
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+  static String route = "WelcomeScreen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +42,10 @@ class WelcomScreen extends StatelessWidget {
                   width: 339.w,
                   child: AuthenticButton(
                       title: "Start chat",
-                      color: Theme.of(context).primaryColor),
+                      color: Theme.of(context).primaryColor,
+                  func:(){
+                        Navigator.pushNamed(context, ChatBotScreen.route);
+                  }),
                 )
               ],
             ))),

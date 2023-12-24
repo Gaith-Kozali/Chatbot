@@ -2,6 +2,8 @@ import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_decoration.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
+import 'package:cr/features/feature_authentication/presentation/screens/information_input_screen.dart';
+import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/authentic_button.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/check_widget.dart';
 import 'package:cr/features/feature_authentication/presentation/widgets/div.dart';
@@ -12,8 +14,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
+  static String route = "SignUpScreen";
   bool isCheck = false;
   bool visible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,9 +90,11 @@ class SignUpScreen extends StatelessWidget {
                 Padding(
                     padding: EdgeInsets.only(top: 42.h, bottom: 21.h),
                     child: AuthenticButton(
-                      title: "Signup",
-                      color: Theme.of(context).primaryColor,
-                    )),
+                        title: "Signup",
+                        color: Theme.of(context).primaryColor,
+                        func: () {
+                          Navigator.pushNamed(context, InformInputScreen.route);
+                        })),
                 Center(
                     child: Text(
                   'Forget password?',
@@ -106,7 +112,10 @@ class SignUpScreen extends StatelessWidget {
                         style: ButtonStyle(
                             overlayColor: MaterialStateProperty.all<Color>(
                                 Colors.transparent)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(LoginScreen.route);
+                        },
                         child: Text(
                           'Sign in',
                           style: Theme.of(context).textTheme.bodySmall,

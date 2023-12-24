@@ -7,5 +7,5 @@ class SettingInitial extends SettingState {}
 
 class ChangeThemeState extends SettingState {
   ChangeThemeState({required this.theme});
-  String theme;
+  AppTheme theme;
 }

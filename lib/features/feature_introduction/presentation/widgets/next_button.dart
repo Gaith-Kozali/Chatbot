@@ -1,6 +1,6 @@
 import 'dart:math';
-import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
+import 'package:cr/features/feature_chatbot/presentation/screens/welcome_screen.dart';
 import 'package:cr/features/feature_introduction/presentation/controllers/introduction_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,13 +23,13 @@ class NextButton extends StatelessWidget {
                 pageCount: pageCount),
           ),
           Icon(Icons.arrow_forward_ios_outlined,
-              color: Theme.of(context).primaryColor)
+              color: Theme.of(context).colorScheme.secondary)
         ],
       ),
       onTap: () {
         context.read<IntroductionCubit>().nextPage();
         if (context.read<IntroductionCubit>().currentPage == pageCount) {
-          Navigator.of(context).pushReplacementNamed(LoginScreen.route);
+          Navigator.of(context).pushNamed(LoginScreen.route);
         }
       },
     );

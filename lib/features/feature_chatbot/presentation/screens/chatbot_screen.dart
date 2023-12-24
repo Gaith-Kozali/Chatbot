@@ -18,14 +18,9 @@ List<String> introString = [
   'ChatGPT launched in November 2022.',
 ];
 
-class ChatBotScreen extends StatefulWidget {
-  const ChatBotScreen({super.key});
-
-  @override
-  State<ChatBotScreen> createState() => _ChatbotScreenState();
-}
-
-class _ChatbotScreenState extends State<ChatBotScreen> {
+class ChatBotScreen extends StatelessWidget {
+  ChatBotScreen({super.key});
+  static String route = "ChatBotScreen";
   late bool displayIntro;
   late bool displayImage;
   late int displaySendMes;

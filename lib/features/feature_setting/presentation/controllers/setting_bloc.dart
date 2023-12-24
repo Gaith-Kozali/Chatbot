@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
+import 'package:cr/core/constants/app_theme.dart';
 import 'package:meta/meta.dart';
 
 part 'setting_event.dart';

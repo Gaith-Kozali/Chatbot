@@ -7,7 +7,7 @@ Widget Div(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
       SizedBox(
-        width: 117.w,
+        width: 110.w,
         child: Divider(
           color: Theme.of(context).dividerColor,
           thickness: 2,
@@ -17,7 +17,7 @@ Widget Div(BuildContext context) {
           style: AppFonts.inter16W500
               .copyWith(color: Theme.of(context).colorScheme.primary)),
       SizedBox(
-        width: 117.w,
+        width: 110.w,
         child: Divider(
           color: Theme.of(context).dividerColor,
           thickness: 2,

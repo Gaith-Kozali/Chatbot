@@ -1,6 +1,7 @@
 import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
+import 'package:cr/features/feature_setting/presentation/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,16 +16,18 @@ PreferredSizeWidget chatAppBar(BuildContext context, {required String title}) {
               Border(bottom: BorderSide(color: AppColors.lightBlack, width: 1)),
         ),
         child: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(title, style: AppFonts.inter24W500),
           centerTitle: true,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, SettingScreen.route);
+              },
               icon: SvgPicture.asset(AppImagesPath.settingIcon,
                   colorFilter: ColorFilter.mode(
-                      Theme.of(context).colorScheme.primary, BlendMode.color)),
+                      Theme.of(context).colorScheme.primary, BlendMode.srcIn)),
             ),
             SizedBox(
               width: 10.w,

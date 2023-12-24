@@ -1,12 +1,17 @@
-import 'package:cr/core/constants/app_colors.dart';
+import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:cr/core/constants/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthenticButton extends StatelessWidget {
-  AuthenticButton({super.key, required this.title, required this.color});
+  AuthenticButton(
+      {super.key,
+      required this.title,
+      required this.color,
+      required this.func});
   String title;
   Color color;
+  VoidCallback func;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,7 +25,7 @@ class AuthenticButton extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               )),
-          onPressed: () {},
+          onPressed: func,
           child: Text(
             title,
             style: AppFonts.inter24W700,

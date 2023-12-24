@@ -19,13 +19,11 @@ class SwitchSetting extends StatelessWidget {
           ),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               'chat history & training',
-              style: AppFonts.inter20W600,
-            ),
-            SizedBox(
-              width: 102.w,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             Switch(
               value: true,

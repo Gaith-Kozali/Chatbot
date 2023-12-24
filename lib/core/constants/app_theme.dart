@@ -56,7 +56,7 @@ Map<AppTheme, ThemeData> themeData = {
             AppFonts.inter14W400.copyWith(color: AppColors.whiteIntroDark),
 
         // message receive
-        labelMedium: AppFonts.inter16W400.copyWith(color: AppColors.black),
+        labelMedium: AppFonts.inter16W400.copyWith(color: AppColors.white),
 
         labelSmall:
             AppFonts.inter14W600.copyWith(color: AppColors.whiteIntroDark),

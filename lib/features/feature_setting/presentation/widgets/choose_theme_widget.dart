@@ -1,6 +1,6 @@
 import 'package:cr/core/constants/app_decoration.dart';
-import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
+import 'package:cr/core/constants/app_theme.dart';
 import 'package:cr/features/feature_setting/presentation/controllers/setting_bloc.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-List<String> _themeOption = ["Dark", "Light", "System"];
+List<AppTheme> _themeOption = [AppTheme.dark, AppTheme.light, AppTheme.system];
 String _theme = "system";
 
 class ChooseThemeWidget extends StatelessWidget {
@@ -31,14 +31,14 @@ class ChooseThemeWidget extends StatelessWidget {
           children: [
             Text(
               'chat history & training',
-              style: AppFonts.inter20W600,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             Container(
               width: 113.w,
               height: 38,
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
-                  side:  BorderSide(color: Theme.of(context).primaryColor),
+                  side: BorderSide(color: Theme.of(context).primaryColor),
                   borderRadius: BorderRadius.circular(12).r,
                 ),
               ),
@@ -65,7 +65,7 @@ DropdownButton2 _chooseTheme(BuildContext context) => DropdownButton2(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(e),
+                          Text(e.name),
                           SizedBox(width: 40.w),
                           SvgPicture.asset(AppImagesPath.theme[e] ?? "")
                         ],
@@ -74,9 +74,9 @@ DropdownButton2 _chooseTheme(BuildContext context) => DropdownButton2(
               ))
           .toList(),
       onChanged: (value) {
-        _theme = value;
+        _theme = value.name;
         BlocProvider.of<SettingBloc>(context)
-            .add(ChangeThemeEvent(theme: _theme));
+            .add(ChangeThemeEvent(theme: value));
       },
       underline: const SizedBox(),
       menuItemStyleData: const MenuItemStyleData(

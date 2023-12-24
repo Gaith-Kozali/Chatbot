@@ -1,5 +1,6 @@
 import 'package:cr/core/constants/app_colors.dart';
 import 'package:cr/core/constants/app_fonts.dart';
+import 'package:cr/core/constants/app_theme.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/information_input_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/login_screen.dart';
 import 'package:cr/features/feature_authentication/presentation/screens/signup_screen.dart';
@@ -52,46 +53,19 @@ class MyApp extends StatelessWidget {
                 builder: (context, state) {
                   return MaterialApp(
                     debugShowCheckedModeBanner: false,
-                    theme: ThemeData(
-                        primaryColor: AppColors.blue,
-                        dividerColor: AppColors.white,
-                        textTheme: TextTheme(
-                          titleLarge: AppFonts.inter32W700
-                              .copyWith(color: AppColors.whiteIntroDark),
-                          titleMedium: AppFonts.inter20W700
-                              .copyWith(color: AppColors.whiteIntroDark),
-                          titleSmall: AppFonts.inter16W500
-                              .copyWith(color: AppColors.whiteIntroDark),
-                          // to authentication
-                          displayLarge: AppFonts.inter36W500
-                              .copyWith(color: AppColors.whiteIntroDark),
-                          displayMedium: AppFonts.inter20W600
-                              .copyWith(color: AppColors.whiteIntroDark),
-                          displaySmall: AppFonts.inter14W400
-                              .copyWith(color: AppColors.whiteIntroDark),
-
-                          // message receive
-                          labelMedium: AppFonts.inter16W400
-                              .copyWith(color: AppColors.black),
-
-                          labelSmall: AppFonts.inter14W600
-                              .copyWith(color: AppColors.whiteIntroDark),
-
-                          // to the forget password and under
-                          bodySmall: AppFonts.inter14W500
-                              .copyWith(color: AppColors.blue),
-                        ),
-                        colorScheme: const ColorScheme.dark(
-                          primary: AppColors.whiteIntroDark,
-                          secondary: AppColors.serverBlue,
-                          background: Color(0XFF21252F),
-                        )),
+                    theme: state is ChangeThemeState
+                        ? themeData[state.theme]
+                        : themeData[AppTheme.light],
                     routes: {
-                      IntroductionScreen.route: (context) =>
-                          IntroductionScreen(),
-                      LoginScreen.route: (context) => LoginScreen()
+                      LoginScreen.route: (context) => LoginScreen(),
+                      SignUpScreen.route: (context) => SignUpScreen(),
+                      InformInputScreen.route: (context) =>
+                          const InformInputScreen(),
+                      ChatBotScreen.route: (context) => ChatBotScreen(),
+                      SettingScreen.route: (context) => const SettingScreen(),
+                      WelcomeScreen.route: (context) => const WelcomeScreen(),
                     },
-                    home: IntroductionScreen(),
+                    home: const IntroductionScreen(),
                   );
                 },
               ));

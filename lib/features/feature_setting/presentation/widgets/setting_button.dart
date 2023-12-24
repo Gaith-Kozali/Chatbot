@@ -4,8 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingButton extends StatelessWidget {
-  const SettingButton({super.key});
-
+  SettingButton(
+      {super.key,
+      required this.title,
+      required this.buttonTitle,
+      required this.func});
+  String title;
+  String buttonTitle;
+  VoidCallback func;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,8 +28,8 @@ class SettingButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'chat history & training',
-              style: AppFonts.inter20W600,
+              title,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             SizedBox(
               height: 38,
@@ -34,13 +40,12 @@ class SettingButton extends StatelessWidget {
                           MaterialStateProperty.all<Color>(AppColors.red),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12).r,
-                            side: BorderSide(
-                                color: Theme.of(context).primaryColor)),
+                          borderRadius: BorderRadius.circular(12).r,
+                        ),
                       )),
-                  onPressed: () {},
+                  onPressed: func,
                   child: Text(
-                    "Delete",
+                    buttonTitle,
                     style: AppFonts.inter15W400,
                   )),
             ),

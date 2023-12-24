@@ -1,13 +1,18 @@
 import 'package:cr/core/constants/app_fonts.dart';
+import 'package:cr/core/constants/app_images_path.dart';
+import 'package:cr/core/functions/global_functions.dart';
+import 'package:cr/features/feature_chatbot/presentation/widgets/transmite_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MessageSendWidget extends StatelessWidget {
   MessageSendWidget({super.key, required this.text});
   String text;
+  bool isArabic = false;
 
   @override
   Widget build(BuildContext context) {
+    bool isArabic = containsArabic(text);
     return Padding(
       padding: EdgeInsets.only(bottom: 25.h),
       child: Row(
@@ -25,6 +30,8 @@ class MessageSendWidget extends StatelessWidget {
                 ),
               ),
               child: Text(
+                textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
+                textAlign: isArabic ? TextAlign.right : TextAlign.left,
                 text,
                 style: AppFonts.inter16W400,
               ),
@@ -35,6 +42,7 @@ class MessageSendWidget extends StatelessWidget {
             CircleAvatar(
               radius: 13.r,
               backgroundColor: Colors.red,
+              backgroundImage: AssetImage(AppImagesPath.avatar),
             )
           ]),
     );

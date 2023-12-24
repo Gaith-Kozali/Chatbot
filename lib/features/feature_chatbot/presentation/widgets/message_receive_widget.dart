@@ -1,14 +1,18 @@
-import 'package:cr/core/constants/app_colors.dart';
-import 'package:cr/core/constants/app_fonts.dart';
 import 'package:cr/core/constants/app_images_path.dart';
+import 'package:cr/core/functions/global_functions.dart';
+import 'package:cr/features/feature_chatbot/presentation/widgets/transmite_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MessageReceiveWidget extends StatelessWidget {
   MessageReceiveWidget({super.key, required this.title});
   String title;
+  bool isArabic = false;
+
+
   @override
   Widget build(BuildContext context) {
+    bool isArabic = containsArabic(title);
     return Padding(
       padding: EdgeInsets.only(bottom: 25.h),
       child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
@@ -31,6 +35,8 @@ class MessageReceiveWidget extends StatelessWidget {
             ),
           ),
           child: Text(
+            textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
+            textAlign: isArabic ? TextAlign.right : TextAlign.left,
             title,
             style: Theme.of(context).textTheme.labelMedium,
           ),

@@ -18,6 +18,7 @@ String? _gender;
 
 class InformInputScreen extends StatelessWidget {
   const InformInputScreen({super.key});
+  static String route = "InformInputScreen";
 
   @override
   Widget build(BuildContext context) {

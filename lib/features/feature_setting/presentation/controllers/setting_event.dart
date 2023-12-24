@@ -5,5 +5,5 @@ abstract class SettingEvent {}
 
 class ChangeThemeEvent extends SettingEvent {
   ChangeThemeEvent({required this.theme});
-  String theme;
+  AppTheme theme;
 }
