@@ -15,75 +15,79 @@ String? _gender;
 class InformInputScreen extends StatelessWidget {
   const InformInputScreen({super.key});
   static String route = "InformInputScreen";
-
+// have problem of scalling i but 38 to solve this time  (appBarHeight + 38.h)
   @override
   Widget build(BuildContext context) {
+    double appBarHeight = AuthAppBar(context).preferredSize.height;
     return Scaffold(
         appBar: AuthAppBar(context),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 25.w).copyWith(bottom: 5.h),
-          child: ConstrainedBox(
-              constraints: BoxConstraints(
-                  maxHeight: MediaQuery.of(context).size.longestSide -
-                      AuthAppBar(context).preferredSize.height),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Complete your profile',
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                  Text(
-                    'Please enter your details to complete your profile, don’t worry your details are private.',
-                    style: Theme.of(context).textTheme.displaySmall,
-                  ),
-                  const Center(
-                    child: ChooseProfile(),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Text(
-                    'Full name',
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  SizedBox(
-                    width: 378.w,
-                    child: TextFormField(
-                      decoration:
-                          AppDecoration(context).inputDecoration().copyWith(
-                                hintText: "Full name",
-                              ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            padding:
+                EdgeInsets.symmetric(horizontal: 25.w).copyWith(bottom: 5.h),
+            child: ConstrainedBox(
+                constraints: BoxConstraints(
+                    maxHeight: (MediaQuery.of(context).size.longestSide -
+                        (appBarHeight + 38.h))),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Complete your profile',
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
-                  ),
-                  Text(
-                    'Phone',
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  SizedBox(
-                    width: 378.w,
-                    child: TextFormField(
-                      decoration:
-                          AppDecoration(context).inputDecoration().copyWith(
-                                hintText: "Your phone number",
-                                suffixIcon:
-                                    SvgPicture.asset(AppImagesPath.phoneIcon),
-                                prefixIcon: _choosePhoneCode(context),
-                              ),
+                    Text(
+                      'Please enter your details to complete your profile, don’t worry your details are private.',
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
-                  ),
-                  Text(
-                    'Gender',
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  _chooseGender(context),
-                  SizedBox(
-                    height: 50.h,
-                  ),
-                  const InfoButtons()
-                ],
-              )),
+                    const Center(
+                      child: ChooseProfile(),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      'Full name',
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    SizedBox(
+                      width: 378.w,
+                      child: TextFormField(
+                        decoration:
+                            AppDecoration(context).inputDecoration().copyWith(
+                                  hintText: "Full name",
+                                ),
+                      ),
+                    ),
+                    Text(
+                      'Phone',
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    SizedBox(
+                      width: 378.w,
+                      child: TextFormField(
+                        decoration:
+                            AppDecoration(context).inputDecoration().copyWith(
+                                  hintText: "Your phone number",
+                                  suffixIcon:
+                                      SvgPicture.asset(AppImagesPath.phoneIcon),
+                                  prefixIcon: _choosePhoneCode(context),
+                                ),
+                      ),
+                    ),
+                    Text(
+                      'Gender',
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    _chooseGender(context),
+                    SizedBox(
+                      height: 50.h,
+                    ),
+                    const InfoButtons()
+                  ],
+                )),
+          ),
         ));
   }
 }
@@ -127,7 +131,7 @@ DropdownButton2 _choosePhoneCode(BuildContext context) => DropdownButton2(
         width: 60,
         child: Row(
           children: [
-            SvgPicture.asset(AppImagesPath.googleIcon),
+            SvgPicture.asset(AppImagesPath.countryImage[_phoneCode] ?? ""),
             const Icon(Icons.arrow_drop_down_outlined)
           ],
         )));
