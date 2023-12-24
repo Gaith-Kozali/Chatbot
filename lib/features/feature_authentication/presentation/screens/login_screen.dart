@@ -15,7 +15,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   bool isCheck = false;
-  bool visible = false;
+  bool notVisible = true;
   static const String route = "LoginScreen";
   @override
   Widget build(BuildContext context) {
@@ -64,17 +64,21 @@ class LoginScreen extends StatelessWidget {
                     return SizedBox(
                       width: 378.w,
                       child: TextFormField(
-                        obscureText: visible,
+                        obscureText: notVisible,
                         decoration:
                             AppDecoration(context).inputDecoration().copyWith(
                                 hintText: "Password",
                                 suffixIcon: InkWell(
-                                  child: SvgPicture.asset(visible
-                                      ? AppImagesPath.eyeOffIcon
-                                      : AppImagesPath.eyeIcon),
+                                  child: SvgPicture.asset(
+                                      notVisible
+                                          ? AppImagesPath.eyeOffIcon
+                                          : AppImagesPath.eyeIcon,
+                                      colorFilter: ColorFilter.mode(
+                                          Theme.of(context).colorScheme.primary,
+                                          BlendMode.srcIn)),
                                   onTap: () {
                                     setState(() {
-                                      visible = !visible;
+                                      notVisible = !notVisible;
                                     });
                                   },
                                 )),

@@ -16,7 +16,7 @@ class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
   static String route = "SignUpScreen";
   bool isCheck = false;
-  bool visible = false;
+  bool notVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -67,17 +67,21 @@ class SignUpScreen extends StatelessWidget {
                     return SizedBox(
                       width: 378.w,
                       child: TextFormField(
-                        obscureText: visible,
+                        obscureText: notVisible,
                         decoration:
                             AppDecoration(context).inputDecoration().copyWith(
                                 hintText: "Create your password",
                                 suffixIcon: InkWell(
-                                  child: SvgPicture.asset(visible
-                                      ? AppImagesPath.eyeOffIcon
-                                      : AppImagesPath.eyeIcon),
+                                  child: SvgPicture.asset(
+                                      notVisible
+                                          ? AppImagesPath.eyeOffIcon
+                                          : AppImagesPath.eyeIcon,
+                                      colorFilter: ColorFilter.mode(
+                                          Theme.of(context).colorScheme.primary,
+                                          BlendMode.srcIn)),
                                   onTap: () {
                                     setState(() {
-                                      visible = !visible;
+                                      notVisible = !notVisible;
                                     });
                                   },
                                 )),
