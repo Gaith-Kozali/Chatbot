@@ -1,9 +1,20 @@
+CHATBOT:
+
 -Chatbot program will allow you to chat with Ai .
+
+
 -I connected the program with chatgpt 3 and build the prgram using clean architecture to have best and clean code.
+
+
 -The App have three mode dark & light & system purple .
+
+
+
 -ui/ux is from cyber royale company and app build for training .
 
+
 -some images :
+
 
 ![Screenshot_20231224_170311](https://github.com/Gaith-Kozali/Chatbot/assets/142360873/268bef53-ce6c-4306-add7-9b3322bd0c48)
 
@@ -32,6 +43,9 @@
 ![Screenshot_20231224_184615](https://github.com/Gaith-Kozali/Chatbot/assets/142360873/dd4e6977-36cb-480d-8bd8-64755d8c1d27)
 
 
+
+
+![Screenshot_20231224_191953](https://github.com/Gaith-Kozali/Chatbot/assets/142360873/453944ca-ed01-4c8b-bb58-cf4b5139b377)
 
 
 
